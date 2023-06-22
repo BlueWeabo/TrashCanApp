@@ -1,0 +1,41 @@
+{
+  "project_info": {
+    "project_number": "518082529527",
+    "firebase_url": "https://smartbin-d94f7-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "smartbin-d94f7",
+    "storage_bucket": "smartbin-d94f7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:518082529527:android:48ffe55b326e6962a16bf2",
+        "android_client_info": {
+          "package_name": "com.blueweabo.trashcanapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "518082529527-jl4d5smm1vaogijb6g2nammv723j8aa1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbvLwSNgu386DHL8rl2BXzfoqc7uaEI7g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "518082529527-jl4d5smm1vaogijb6g2nammv723j8aa1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
+
