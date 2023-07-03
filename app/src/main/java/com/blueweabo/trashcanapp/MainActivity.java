@@ -1,23 +1,27 @@
 package com.blueweabo.trashcanapp;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     private DatabaseReference database;
+    private List<Float> percentages = new ArrayList<>();
+    private List<TextView> trashCans;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,10 +56,22 @@ public class MainActivity extends AppCompatActivity {
         ValueEventListener listener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                TrashCan trashCan = snapshot.getValue(TrashCan.class);
-                if (trashCan == null) return;
-                TextView text = findViewById(R.id.trashCan1View);
-                text.setText(String.valueOf(trashCan.percentageFilled));
+                LinearLayout layout = findViewById(R.id.line);
+                if (trashCans == null) {
+                    trashCans = new ArrayList<>();
+                    for (DataSnapshot childSnapshot:snapshot.child("smartbin").getChildren()) {
+                        TextView text = new TextView(layout.getContext());
+                        text.setText(String.format("%.2f", childSnapshot.getValue(Float.class)) + "%");
+                        layout.addView(text);
+                        trashCans.add(text);
+                    }
+                    return;
+                }
+                percentages.clear();
+                int i = 0;
+                for (DataSnapshot childSnapshot:snapshot.child("smartbin").getChildren()) {
+                    trashCans.get(i++).setText(String.format("%.2f", childSnapshot.getValue(Float.class)) + "%");
+                }
             }
 
             @Override
