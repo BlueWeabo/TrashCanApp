@@ -24,7 +24,7 @@ jobs:
       - name: Label requires reviews
         uses: travelperk/label-requires-reviews-action@1.3.0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN}}
+          github_token: ${{ secrets.GH_TOKEN}}
           # define which PR labels require how many aprroving reviewers
           #rules_yaml: |-
           # Affects Balance: 3 
