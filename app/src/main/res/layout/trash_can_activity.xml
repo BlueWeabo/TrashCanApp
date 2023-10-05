@@ -5,15 +5,27 @@
 
     <LinearLayout
         android:id="@+id/line"
-        android:layout_width="171dp"
-        android:layout_height="632dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/mapView"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
         android:layout_marginStart="90dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="90dp"
-        android:layout_marginBottom="30dp"
-        android:orientation="vertical"></LinearLayout>
+        android:layout_marginBottom="0dp"
+        android:orientation="vertical"/>
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="187dp"
+        android:layout_height="300dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="90dp"
+        android:layout_marginEnd="90dp"
+        android:layout_marginBottom="30dp" />
+
 </RelativeLayout>
