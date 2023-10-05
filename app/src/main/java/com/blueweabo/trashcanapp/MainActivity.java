@@ -32,9 +32,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private DatabaseReference database;
-    private List<Float> percentages = new ArrayList<>();
-    private List<ProgressBar> trashCanProgresses = new ArrayList<>();
-    private List<TextView> trashCans = new ArrayList<>();
+    private final List<ProgressBar> trashCanProgresses = new ArrayList<>();
+    private final List<TextView> trashCans = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 LinearLayout layout = findViewById(R.id.line);
-                percentages.clear();
                 int i = 0;
                 for (DataSnapshot childSnapshot:snapshot.child("smartbin").getChildren()) {
                     if (i >= trashCans.size()) {
@@ -61,12 +59,22 @@ public class MainActivity extends AppCompatActivity {
                                 android.R.attr.progressBarStyleHorizontal);
                         progressBar.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                         progressBar.setMax(100);
-                        progressBar.setScaleY(10f);
-                        layout.addView(progressBar, LinearLayout.LayoutParams);
+                        progressBar.setScaleY(5f);
+                        TextView text = new TextView(layout.getContext());
+                        text.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                        text.setWidth(layout.getWidth());
+                        layout.addView(progressBar, new LinearLayout.LayoutParams(layout.getWidth(), 100));
+                        layout.addView(text);
                         trashCanProgresses.add(progressBar);
+                        trashCans.add(text);
                     }
                     float filledAmount = childSnapshot.getValue(Float.class);
-                    trashCanProgresses.get(i++).setProgress((int)Math.floor(filledAmount));
+                    trashCanProgresses.get(i).setProgress((int)Math.floor(filledAmount));
+                    trashCans.get(i++).setText(String.format("%.2f", filledAmount) + "% filled");
+                }
+                while (trashCans.size() > i) {
+                    trashCans.remove(trashCans.size() - 1);
+                    trashCanProgresses.remove(trashCanProgresses.size() - 1);
                 }
             }
 
