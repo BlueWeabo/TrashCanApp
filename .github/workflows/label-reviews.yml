@@ -29,5 +29,5 @@ jobs:
           github_token: ${{ secrets.GH_TOKEN}}
           # define which PR labels require how many aprroving reviewers
           rules_yaml: |-
-            Affects Balance: 3 
-            ongoing freeze - don't merge: 99
+            affects balance: 3 
+            on  going freeze: 99
