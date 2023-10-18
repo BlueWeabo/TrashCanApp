@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Label requires reviews
-        uses: travelperk/label-requires-reviews-action@main
+        uses: blueweabo/label-requires-reviews-action@master
         with:
           github_token: ${{ secrets.GH_TOKEN}}
           # define which PR labels require how many aprroving reviewers
