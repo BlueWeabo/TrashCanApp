@@ -30,4 +30,4 @@ jobs:
           # define which PR labels require how many aprroving reviewers
           rules_yaml: |-
             affects balance: 3 
-            freeze: 99
+            on going freeze - don't merge: 99
