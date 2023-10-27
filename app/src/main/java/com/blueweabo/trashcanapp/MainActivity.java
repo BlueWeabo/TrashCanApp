@@ -61,21 +61,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_activity);
-        TextView name = findViewById(R.id.loginNameTittle);
-        name.setText("Username");
-        TextView pass = findViewById(R.id.loginPasswordTittle);
-        pass.setText("Password");
-        Button btn = findViewById(R.id.loginButton);
-        btn.setOnClickListener(view -> {
-
-
-
-            successfulLogin();
-        });
-    }
-
-    protected void successfulLogin() {
         setContentView(R.layout.trash_can_activity);
         openDatabase();
         addValueListener();
